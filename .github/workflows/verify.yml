@@ -1,0 +1,39 @@
+name: Trend Watcher — durable multirun proof
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  logic-tests-and-worker-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - name: Verify 3-observation trend, single spike, exactly-once alert, idempotency and replay
+        run: npm test
+      - name: Build Cloudflare Worker with SQLite Durable Object binding
+        run: npm run build-check
+  deployed-persistence-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Exercise public Worker and persistent journal across independent HTTP requests
+        run: node scripts/smoke-deployed.mjs
+      - name: Save timestamped persisted trend and live gas evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pharos-trend-watcher-durable-proof
+          path: proof/ci-trend-evidence.json
+          retention-days: 30
+          if-no-files-found: error
