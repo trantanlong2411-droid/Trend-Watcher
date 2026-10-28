@@ -19,6 +19,19 @@ for(let i=0;i<20;i++){
 }
 assert.equal(health?.storage,'sqlite-backed Durable Objects');
 assert.equal(health?.transactionBroadcast,false);
+
+// Cross-deployment persistence check: this stream was created by CI run
+// 40748381939 before the current Worker build. Every new build must retain
+// its original journal with the same alert timestamps and observation IDs.
+const prior=await api('/api/state?stream=ci-1793213298789-w0ivrzl');
+assert.ok(prior.observationCount>=12,'Prior deployment journal was lost');
+assert.ok(prior.alertCount>=2,'Prior deployment alerts were lost');
+assert.equal(prior.events[0].at,'2026-10-28T18:48:20.510Z');
+assert.equal(prior.events[1].at,'2026-10-28T18:48:21.812Z');
+console.log('PREVIOUS DEPLOYMENT JOURNAL PERSISTED',JSON.stringify({
+ stream:'ci-1793213298789-w0ivrzl',history:prior.observationCount,alerts:prior.alertCount,
+ firstAlert:prior.events[0].at,secondAlert:prior.events[1].at
+}));
 const stream='ci-'+Date.now()+'-'+Math.random().toString(36).slice(2,9);
 const result={schema:'trend-watcher-ci-proof-v1',verifiedAt:new Date().toISOString(),
  source:'DEMO_MULTI_HTTP_REQUESTS_WITH_SQLITE_DURABLE_OBJECT',

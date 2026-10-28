@@ -22,6 +22,20 @@ Chain: Pharos Atlantic Testnet (688689), RPC `https://atlantic.dplabs-internal.c
 | Stored history and exact trigger time | Each observation stores timestamp UTC, Gwei, source, block for live data, streak, policy revision and decision. `ALERT_FIRED` ledger has UTC trigger timestamp, exact observation ID, rule and count. |
 | Single spike must not trigger | The six-request deterministic proof uses 10,3,10 then 4,3,2 Gwei with threshold 5 and N=3. After the spike, 0 alerts; on the final confirmed low, precisely 1 alert. Continuing lows do not duplicate. |
 
+## Verified public persistent proof
+
+First fully successful run: [GitHub Actions #40748381939](https://github.com/trantanlong2411-droid/Trend-Watcher/actions/runs/40748381939). All logic tests, Cloudflare Worker deploy and deployed HTTP tests passed.
+
+The real deployed test created a saved public notebook containing 12 observations, 2 alert events at exact UTC timestamps, idempotent duplicate-ID rejection, and one separately tagged real Pharos Atlantic gas observation (10 Gwei).
+
+- [Open the persisted proof notebook](https://trend-watcher.trantanlong2411.workers.dev/?stream=ci-1793213298789-w0ivrzl) to inspect the already-saved timeline and both alert events.
+- Original first alert: `2026-10-28T18:48:20.510Z`.
+- Original second alert: `2026-10-28T18:48:21.812Z`.
+- A standalone CI artifact `pharos-trend-watcher-durable-proof` contains the full machine-readable journal and verification trace.
+- Later CI jobs explicitly re-read this original notebook and require the same alert timestamps, to check that deploying a newer Worker does not destroy the prior journal.
+
+This verifies persistence across separate HTTP operations and, once a subsequent Worker deployment is complete, across a deployment. No CI test claims to force a Cloudflare Durable Object process eviction or system restart.
+
 ## Reviewer walkthrough
 
 1. Open the public Worker. Use **New notebook** for an isolated durable stream. The notebook ID is included in the public proof URL; use **Copy proof link** to share it.
