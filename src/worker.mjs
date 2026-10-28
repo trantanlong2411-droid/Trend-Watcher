@@ -3,6 +3,10 @@ import {newJournal,changeRule,applyObservation,publicState,NETWORK,validateRule}
 import {HTML} from './page.mjs';
 
 const SCHEDULED='pharos-scheduled-hourly';
+const LOCKED_PROOF_STREAMS=new Set([
+ 'ci-1793213298789-w0ivrzl',
+ 'ci-1793213375304-jlvun2b'
+]);
 const headers={'content-type':'application/json; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff'};
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers});
 function validStream(id){
@@ -100,7 +104,8 @@ export default{
     return json({ok:false,error:'Not found'},404);
    const body=await readBody(request);
    const stream=validStream(body.stream);
-   if(stream===SCHEDULED)return json({ok:false,error:'Scheduled notebook is read-only from public endpoints'},403);
+   if(stream===SCHEDULED||LOCKED_PROOF_STREAMS.has(stream))
+    return json({ok:false,error:'Verified proof and hourly notebooks are read-only. Create a fresh demo notebook.'},403);
    if(u.pathname==='/api/rule')
     return forward(env,stream,'/rule','POST',{stream,rule:validateRule(body.rule)});
    const id=String(body.id||'');

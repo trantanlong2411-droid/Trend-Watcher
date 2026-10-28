@@ -72,3 +72,12 @@ test('bounded journal retains 250 latest observations and 500 recent replay IDs'
  assert.equal(j.observations.length,250);
  assert.equal(j.seenIds.length,300);
 });
+
+test('synthetic and real Pharos observations cannot be mixed in one persistent notebook',()=>{
+ let journal=newJournal();
+ journal=applyObservation(journal,sample(10,'synthetic-first')).journal;
+ assert.equal(journal.observationSource,'SYNTHETIC_DEMO');
+ assert.throws(()=>applyObservation(journal,{
+  id:'real-block-1234',gwei:10,blockNumber:'1234',source:'PHAROS_ATLANTIC_LIVE'
+ }),/Cannot mix live and synthetic/);
+});

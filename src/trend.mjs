@@ -14,7 +14,7 @@ export function validateRule(value={}){
 export function newJournal(rule=DEFAULT_RULE,at=new Date().toISOString()){
  return {schema:'pharos-trend-journal-v1',createdAt:at,updatedAt:at,
   rule:validateRule(rule),ruleRevision:1,consecutive:0,armed:true,
-  observations:[],events:[],alertCount:0,seenIds:[],configHistory:[]};
+  observations:[],events:[],alertCount:0,seenIds:[],configHistory:[],observationSource:null};
 }
 export function changeRule(state,rule,now=new Date().toISOString()){
  const next=structuredClone(state);
@@ -44,7 +44,10 @@ export function applyObservation(journal,raw,now=new Date().toISOString()){
  const sample=validateObservation(raw);
  if(journal.seenIds.includes(sample.id))return {journal,duplicate:true,observation:journal.observations.find(x=>x.id===sample.id)||null,
   triggered:false};
+ const expected=journal.observationSource||journal.observations[0]?.source||null;
+ if(expected&&expected!==sample.source)throw Error('Cannot mix live and synthetic values in one notebook. Create a new notebook.');
  const next=structuredClone(journal);
+ next.observationSource=sample.source;
  const previous=next.observations.at(-1);
  let qualifies;
  if(next.rule.mode==='below'){

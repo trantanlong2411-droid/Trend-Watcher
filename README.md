@@ -52,7 +52,7 @@ If desired, use **Run complete 6-check proof on a new notebook** to create the f
 ## Safety and limitations
 
 - Public demonstration: notebook IDs are not access control. Do not store wallets, personal secrets, keys or private information. The public interface can change demo notebooks; protect/admin-authenticate the API before using it for production monitoring.
-- The backend validates the live chain ID 688689; live values come from actual RPC, never a user-provided number. Synthetic values are only stored with source `SYNTHETIC_DEMO`.
+- The backend validates the live chain ID 688689; live values come from actual RPC, never a user-provided number. Synthetic values are only stored with source `SYNTHETIC_DEMO`. A notebook is restricted to one source mode; create a new notebook before switching between synthetic and live checks.
 - No wallet, on-chain execution or signing. The action is a **durable alert log**, not an external transaction or automated trade.
 - SQLite-backed Durable Objects provide durable storage. Latest 250 observations and 150 events per notebook are displayed; oldest data are bounded, and the most recent 500 observation IDs are deduplicated.
 - Scheduled cron is hourly and will not immediately yield 3 live observations. The scheduled public stream is read-only from user-facing endpoints.
