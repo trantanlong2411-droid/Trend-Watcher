@@ -22,6 +22,14 @@ Chain: Pharos Atlantic Testnet (688689), RPC `https://atlantic.dplabs-internal.c
 | Stored history and exact trigger time | Each observation stores timestamp UTC, Gwei, source, block for live data, streak, policy revision and decision. `ALERT_FIRED` ledger has UTC trigger timestamp, exact observation ID, rule and count. |
 | Single spike must not trigger | The six-request deterministic proof uses 10,3,10 then 4,3,2 Gwei with threshold 5 and N=3. After the spike, 0 alerts; on the final confirmed low, precisely 1 alert. Continuing lows do not duplicate. |
 
+## User-exported browser evidence — October 28, 2026
+
+- [Full original 12-observation exported JSON](./proof/user-trend-proof-2026-10-28.json) and [auditable reviewer summary](./proof/USER-DEMO.md).
+- Recorded `10 → 3 → 10` (no alert), then `4 → 3 → 2` (`ALERT_FIRED` at `2026-10-28T18:59:48.902Z` UTC), then six additional below-threshold observations (no duplicate alert).
+- Export SHA-256: `3e6778dcd17c7cd8b87e62344d8585028240165dd691aec984c78e448a443bdd`. All user values are **SYNTHETIC_DEMO**, not claimed as independent chain measurements.
+- Source-independent state-machine replay: `node scripts/verify-user-demo.mjs`. Optional comparison against persistent hosted notebook: `node scripts/verify-user-demo.mjs --live`.
+- [Open user notebook](https://trend-watcher.trantanlong2411.workers.dev/?stream=demo-42371df8-3821-4d54-b4b2-e22837f714de). The GitHub snapshot is authoritative for its state at export time; this public demo notebook may accept later writes.
+
 ## Verified public persistent proof
 
 First fully successful run: [GitHub Actions #40748381939](https://github.com/trantanlong2411-droid/Trend-Watcher/actions/runs/40748381939). All logic tests, Cloudflare Worker deploy and deployed HTTP tests passed.

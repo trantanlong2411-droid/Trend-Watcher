@@ -1,0 +1,260 @@
+{
+  "project": "Pharos Trend Watcher",
+  "exportedAt": "2026-10-28T19:00:23.204Z",
+  "proofUrl": "https://trend-watcher.trantanlong2411.workers.dev/?stream=demo-42371df8-3821-4d54-b4b2-e22837f714de",
+  "note": "Public demonstration; synthetic readings are explicitly marked.",
+  "journal": {
+    "ok": true,
+    "stream": "demo-42371df8-3821-4d54-b4b2-e22837f714de",
+    "persistentStorage": "CLOUDFLARE_SQLITE_DURABLE_OBJECT",
+    "schema": "pharos-trend-journal-v1",
+    "createdAt": "2026-10-28T18:59:41.643Z",
+    "updatedAt": "2026-10-28T19:00:07.553Z",
+    "rule": {
+      "mode": "below",
+      "thresholdGwei": 5,
+      "minObservations": 3
+    },
+    "ruleRevision": 2,
+    "consecutive": 9,
+    "armed": false,
+    "observations": [
+      {
+        "id": "obs-c723e0ce-441c-41f9-829d-56f46364ed47",
+        "gwei": 10,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T18:59:41.763Z",
+        "decision": "NO_TREND",
+        "consecutive": 0,
+        "ruleRevision": 2,
+        "armedAfter": true,
+        "qualifies": false,
+        "eventId": null
+      },
+      {
+        "id": "obs-86231ef8-1e5f-4c3a-a0e7-1b1e66d6ece5",
+        "gwei": 3,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T18:59:41.871Z",
+        "decision": "OBSERVE_ONLY",
+        "consecutive": 1,
+        "ruleRevision": 2,
+        "armedAfter": true,
+        "qualifies": true,
+        "eventId": null
+      },
+      {
+        "id": "obs-ef412682-bd4c-4c0e-95a6-fa55ec08e1f6",
+        "gwei": 10,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T18:59:41.976Z",
+        "decision": "NO_TREND",
+        "consecutive": 0,
+        "ruleRevision": 2,
+        "armedAfter": true,
+        "qualifies": false,
+        "eventId": null
+      },
+      {
+        "id": "obs-136f65a0-0e74-4e85-b5d1-450b45304f1c",
+        "gwei": 4,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T18:59:48.705Z",
+        "decision": "OBSERVE_ONLY",
+        "consecutive": 1,
+        "ruleRevision": 2,
+        "armedAfter": true,
+        "qualifies": true,
+        "eventId": null
+      },
+      {
+        "id": "obs-117aa2bb-8f5f-4e7f-b177-e075c145cc39",
+        "gwei": 3,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T18:59:48.813Z",
+        "decision": "OBSERVE_ONLY",
+        "consecutive": 2,
+        "ruleRevision": 2,
+        "armedAfter": true,
+        "qualifies": true,
+        "eventId": null
+      },
+      {
+        "id": "obs-35d68bac-3351-41a8-81d8-08c3dd23ea1a",
+        "gwei": 2,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T18:59:48.902Z",
+        "decision": "ALERT_FIRED",
+        "consecutive": 3,
+        "ruleRevision": 2,
+        "armedAfter": false,
+        "qualifies": true,
+        "eventId": "alert-1"
+      },
+      {
+        "id": "obs-df136426-45ff-4e34-9f71-5122faa7d39b",
+        "gwei": 4,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T18:59:59.322Z",
+        "decision": "OBSERVE_ONLY",
+        "consecutive": 4,
+        "ruleRevision": 2,
+        "armedAfter": false,
+        "qualifies": true,
+        "eventId": null
+      },
+      {
+        "id": "obs-b49dba58-bbeb-4dea-9f78-fa2a42d2a1dd",
+        "gwei": 3,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T18:59:59.417Z",
+        "decision": "OBSERVE_ONLY",
+        "consecutive": 5,
+        "ruleRevision": 2,
+        "armedAfter": false,
+        "qualifies": true,
+        "eventId": null
+      },
+      {
+        "id": "obs-c1a6bb14-9b10-46a3-817f-d111a026e3aa",
+        "gwei": 2,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T18:59:59.526Z",
+        "decision": "OBSERVE_ONLY",
+        "consecutive": 6,
+        "ruleRevision": 2,
+        "armedAfter": false,
+        "qualifies": true,
+        "eventId": null
+      },
+      {
+        "id": "obs-49444a9b-5a4d-44af-9d08-b19f4081204d",
+        "gwei": 1,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T19:00:07.349Z",
+        "decision": "OBSERVE_ONLY",
+        "consecutive": 7,
+        "ruleRevision": 2,
+        "armedAfter": false,
+        "qualifies": true,
+        "eventId": null
+      },
+      {
+        "id": "obs-5191de31-dfc6-4c6b-9006-69f2c9de3c34",
+        "gwei": 1,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T19:00:07.437Z",
+        "decision": "OBSERVE_ONLY",
+        "consecutive": 8,
+        "ruleRevision": 2,
+        "armedAfter": false,
+        "qualifies": true,
+        "eventId": null
+      },
+      {
+        "id": "obs-8d9e115a-7fcb-410f-92f0-f021ffa143c8",
+        "gwei": 1,
+        "source": "SYNTHETIC_DEMO",
+        "blockNumber": null,
+        "at": "2026-10-28T19:00:07.553Z",
+        "decision": "OBSERVE_ONLY",
+        "consecutive": 9,
+        "ruleRevision": 2,
+        "armedAfter": false,
+        "qualifies": true,
+        "eventId": null
+      }
+    ],
+    "events": [
+      {
+        "eventId": "alert-1",
+        "at": "2026-10-28T18:59:48.902Z",
+        "source": "SYNTHETIC_DEMO",
+        "observationId": "obs-35d68bac-3351-41a8-81d8-08c3dd23ea1a",
+        "ruleRevision": 2,
+        "rule": {
+          "mode": "below",
+          "thresholdGwei": 5,
+          "minObservations": 3
+        },
+        "countAtTrigger": 3,
+        "type": "ALERT_FIRED",
+        "action": "PERSISTED_ALERT_ONLY",
+        "message": "Trend confirmed after 3 observations. No on-chain transaction was sent."
+      }
+    ],
+    "alertCount": 1,
+    "seenIds": [
+      "obs-c723e0ce-441c-41f9-829d-56f46364ed47",
+      "obs-86231ef8-1e5f-4c3a-a0e7-1b1e66d6ece5",
+      "obs-ef412682-bd4c-4c0e-95a6-fa55ec08e1f6",
+      "obs-136f65a0-0e74-4e85-b5d1-450b45304f1c",
+      "obs-117aa2bb-8f5f-4e7f-b177-e075c145cc39",
+      "obs-35d68bac-3351-41a8-81d8-08c3dd23ea1a",
+      "obs-df136426-45ff-4e34-9f71-5122faa7d39b",
+      "obs-b49dba58-bbeb-4dea-9f78-fa2a42d2a1dd",
+      "obs-c1a6bb14-9b10-46a3-817f-d111a026e3aa",
+      "obs-49444a9b-5a4d-44af-9d08-b19f4081204d",
+      "obs-5191de31-dfc6-4c6b-9006-69f2c9de3c34",
+      "obs-8d9e115a-7fcb-410f-92f0-f021ffa143c8"
+    ],
+    "configHistory": [
+      {
+        "at": "2026-10-28T18:59:41.643Z",
+        "oldRule": {
+          "mode": "below",
+          "thresholdGwei": 9,
+          "minObservations": 3
+        },
+        "newRule": {
+          "mode": "below",
+          "thresholdGwei": 5,
+          "minObservations": 3
+        },
+        "revision": 2
+      }
+    ],
+    "observationSource": "SYNTHETIC_DEMO",
+    "observationCount": 12,
+    "latest": {
+      "id": "obs-8d9e115a-7fcb-410f-92f0-f021ffa143c8",
+      "gwei": 1,
+      "source": "SYNTHETIC_DEMO",
+      "blockNumber": null,
+      "at": "2026-10-28T19:00:07.553Z",
+      "decision": "OBSERVE_ONLY",
+      "consecutive": 9,
+      "ruleRevision": 2,
+      "armedAfter": false,
+      "qualifies": true,
+      "eventId": null
+    },
+    "lastAlert": {
+      "eventId": "alert-1",
+      "at": "2026-10-28T18:59:48.902Z",
+      "source": "SYNTHETIC_DEMO",
+      "observationId": "obs-35d68bac-3351-41a8-81d8-08c3dd23ea1a",
+      "ruleRevision": 2,
+      "rule": {
+        "mode": "below",
+        "thresholdGwei": 5,
+        "minObservations": 3
+      },
+      "countAtTrigger": 3,
+      "type": "ALERT_FIRED",
+      "action": "PERSISTED_ALERT_ONLY",
+      "message": "Trend confirmed after 3 observations. No on-chain transaction was sent."
+    }
+  }
+}

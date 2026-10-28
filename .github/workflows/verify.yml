@@ -17,6 +17,8 @@ jobs:
       - run: npm install --no-audit --no-fund
       - name: Verify 3-observation trend, single spike, exactly-once alert, idempotency and replay
         run: npm test
+      - name: Independently replay exported user trend audit
+        run: node scripts/verify-user-demo.mjs
       - name: Build Cloudflare Worker with SQLite Durable Object binding
         run: npm run build-check
   deployed-persistence-proof:
@@ -29,6 +31,8 @@ jobs:
           node-version: '22'
       - name: Exercise public Worker and persistent journal across independent HTTP requests
         run: node scripts/smoke-deployed.mjs
+      - name: Independently read original user notebook from Cloudflare Durable Objects
+        run: node scripts/verify-user-demo.mjs --live
       - name: Save timestamped persisted trend and live gas evidence
         if: success()
         uses: actions/upload-artifact@v4
